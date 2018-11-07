@@ -1,6 +1,6 @@
 # TheCodeBookCipherChallenges
 
-Cipher texts copied from [here](https://simonsingh.net/cryptography/cipher-challenge/the-ciphertexts/).
+Cipher texts copied from [here](https://simonsingh.net/cryptography/cipher-challenge/the-ciphertexts/). Further challenges and hints can be found [here](https://simonsingh.net/cryptography/cryptograms/).
 
 ## Stage 1
 ### Simple Monoalphabetic Substitution Cipher
