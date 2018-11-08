@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include <map>
+#include <queue>
 
 using namespace std;
 
@@ -28,11 +28,39 @@ string readCipherText(const unsigned int stage) {
     return cipherText;
 }
 
-struct CharacterFrequencyMapComparator {
-    bool operator()(const char &left, const char &right) const {
-        return (left < right);
+class CharacterFrequency {
+public:
+    CharacterFrequency(char _character, int _frequency);
+
+
+    char getCharacter();
+
+    int getFrequency();
+
+private:
+    char character;
+    int frequency;
+};
+
+CharacterFrequency::CharacterFrequency(char _character, int _frequency) {
+    character = _character;
+    frequency = _frequency;
+}
+
+char CharacterFrequency::getCharacter() {
+    return character;
+}
+
+int CharacterFrequency::getFrequency() {
+    return frequency;
+}
+
+struct CharacterFrequencyComparator {
+    bool operator()(CharacterFrequency &left, CharacterFrequency &right) const {
+        return (left.getFrequency() < right.getFrequency());
     }
 };
+
 
 void simpleFrequencyAnalysis(string text) {
     int frequency[256] = {};
@@ -46,30 +74,28 @@ void simpleFrequencyAnalysis(string text) {
         ++frequency[c];
     }
 
-    map<char, int, CharacterFrequencyMapComparator> characterFrequencyMap;
-    for (int j = 0; j < 256; ++j) {
-//        cout << frequency[j] << endl;
+    priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue;
 
+    for (int j = 0; j < 256; ++j) {
         if (frequency[j] > 0) {
-//            characterFrequencyMap[char(j)] = frequency[j];
-            characterFrequencyMap.insert(make_pair(char(j), frequency[j]));
+            CharacterFrequency a(char(j), frequency[j]);
+            characterFrequencyQueue.push(a);
         }
     }
 
-    for (map<char, int>::iterator it = characterFrequencyMap.begin();
-         it != characterFrequencyMap.end(); it++) {
-        cout << it->first << " :: " << it->second << endl;
+    while (!characterFrequencyQueue.empty()) {
+        CharacterFrequency t = characterFrequencyQueue.top();
+        char c = t.getCharacter();
+        int f = t.getFrequency();
+        cout << c << ' ' << f << endl;
+        characterFrequencyQueue.pop();
     }
-
-
 }
 
 int main() {
-    string cipherText = readCipherText(1);
+    string stageOneCipherText = readCipherText(1);
 
-//    simpleFrequencyAnalysis("AAAABB");
-    simpleFrequencyAnalysis(cipherText);
-//    cout << cipherText << endl;
+    simpleFrequencyAnalysis(stageOneCipherText);
 
     return 0;
 }
