@@ -2,6 +2,9 @@
 #define THECODEBOOKCIPHERCHALLENGES_FREQUENCYANALYSIS_H
 
 #include <string>
+//#include <queue>
+#include <map>
+#include "LetterFrequency.h"
 
 using namespace std;
 
@@ -20,6 +23,9 @@ public:
 
 private:
     string _cipherText;
+
+    map<char, char> singleLetterKey;
+
     unsigned int _asciiFrequencyArray[256];
 
     void assignAsciiFrequencyArray();

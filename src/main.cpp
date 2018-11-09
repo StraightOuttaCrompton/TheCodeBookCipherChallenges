@@ -2,8 +2,6 @@
 
 #include <string>
 #include <vector>
-#include <queue>
-#include <map>
 #include "stage1/Stage1.h"
 
 using namespace std;
@@ -92,7 +90,7 @@ using namespace std;
 //
 //    getAsciiCharacterFrequencies(text, asciiCharacterFrequencies);
 //
-//    priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue = orderCharacterFrequencies(
+//    priority_queue<LetterFrequency, vector<LetterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue = orderCharacterFrequencies(
 //            asciiCharacterFrequencies);
 //
 ////    printCharacterFrequencyQueue(characterFrequencyQueue);
