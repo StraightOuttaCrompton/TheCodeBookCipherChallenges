@@ -1,101 +1,110 @@
 #include <iostream>
-#include <fstream>
+
 #include <string>
 #include <vector>
 #include <queue>
+#include <map>
+#include "stage1/Stage1.h"
 
 using namespace std;
 
-
-string readCipherText(const unsigned int stage) {
-    ifstream myFile;
-    string cipherText;
-
-    myFile.open("cipherTexts/" + to_string(stage) + ".txt");
-
-    if (!myFile.good()) {
-        cout << "Failed to open file" << endl;
-    } else {
-        while (!myFile.eof()) {
-            string line;
-            getline(myFile, line);
-            cipherText += line + " ";
-        }
-    }
-
-    myFile.close();
-
-    return cipherText;
-}
-
-class CharacterFrequency {
-public:
-    CharacterFrequency(char _character, int _frequency);
-
-
-    char getCharacter();
-
-    int getFrequency();
-
-private:
-    char character;
-    int frequency;
-};
-
-CharacterFrequency::CharacterFrequency(char _character, int _frequency) {
-    character = _character;
-    frequency = _frequency;
-}
-
-char CharacterFrequency::getCharacter() {
-    return character;
-}
-
-int CharacterFrequency::getFrequency() {
-    return frequency;
-}
-
-struct CharacterFrequencyComparator {
-    bool operator()(CharacterFrequency &left, CharacterFrequency &right) const {
-        return (left.getFrequency() < right.getFrequency());
-    }
-};
-
-
-void simpleFrequencyAnalysis(string text) {
-    int frequency[256] = {};
-
-    for (int i = 0; i < text.size(); ++i) {
-        int c = int(text[i]);
-        if (c > 255) {
-            throw new invalid_argument("Not ASCII character");
-        }
-
-        ++frequency[c];
-    }
-
-    priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue;
-
-    for (int j = 0; j < 256; ++j) {
-        if (frequency[j] > 0) {
-            CharacterFrequency a(char(j), frequency[j]);
-            characterFrequencyQueue.push(a);
-        }
-    }
-
-    while (!characterFrequencyQueue.empty()) {
-        CharacterFrequency t = characterFrequencyQueue.top();
-        char c = t.getCharacter();
-        int f = t.getFrequency();
-        cout << c << ' ' << f << endl;
-        characterFrequencyQueue.pop();
-    }
-}
+//
+//struct CharacterFrequencyComparator {
+//    bool operator()(CharacterFrequency &left, CharacterFrequency &right) const {
+//        return (left.getFrequency() < right.getFrequency());
+//    }
+//};
+//
+//
+//void getAsciiCharacterFrequencies(string text, int (&frequencyArray)[256]) {
+//}
+//
+//priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator>
+//orderCharacterFrequencies(int (&frequencyArray)[256]) {
+//    priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue;
+//
+//    for (int j = 0; j < 256; ++j) {
+//        if (frequencyArray[j] > 0) {
+//            CharacterFrequency a(char(j), frequencyArray[j]);
+//            characterFrequencyQueue.push(a);
+//        }
+//    }
+//
+//    return characterFrequencyQueue;
+//}
+//
+//void printCharacterFrequencyQueue(
+//        priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue
+//) {
+//    while (!characterFrequencyQueue.empty()) {
+//        CharacterFrequency t = characterFrequencyQueue.top();
+//        char c = t.getCharacter();
+//        int f = t.getFrequency();
+//        cout << c << ' ' << f << endl;
+//        characterFrequencyQueue.pop();
+//    }
+//}
+//
+//void decipherAccordingToFrequencies(string cipherText,
+//                                    priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue,
+//                                    string language) {
+//
+//    string languageLetterFrequencies = getCharacterFrequenciesByLanguage(language);
+//
+//    map<char, char> deciphermentCharacterMap;
+//
+//    for (int i = 0; i < languageLetterFrequencies.length(); ++i) {
+//        if (characterFrequencyQueue.empty()) {
+//            break;
+//        }
+//
+//
+//        CharacterFrequency t = characterFrequencyQueue.top();
+//        char c = t.getCharacter();
+//        char f = t.getFrequency();
+//        characterFrequencyQueue.pop();
+//
+//        if (f < 30) {
+//            break;
+//        }
+//
+//        deciphermentCharacterMap[c] = languageLetterFrequencies[i];
+//    }
+//
+//    string decipheredText;
+//
+//    for (int j = 0; j < cipherText.length(); ++j) {
+//        char c = cipherText[j];
+//        if (c < 65 || c > 90) {
+//            decipheredText += c;
+//        } else {
+//            decipheredText += deciphermentCharacterMap[c];
+//        }
+//    }
+//
+//    cout << cipherText << endl;
+//    cout << decipheredText << endl;
+//}
+//
+//
+//void simpleFrequencyAnalysis(string text) {
+//    int asciiCharacterFrequencies[256] = {};
+//
+//    getAsciiCharacterFrequencies(text, asciiCharacterFrequencies);
+//
+//    priority_queue<CharacterFrequency, vector<CharacterFrequency>, CharacterFrequencyComparator> characterFrequencyQueue = orderCharacterFrequencies(
+//            asciiCharacterFrequencies);
+//
+////    printCharacterFrequencyQueue(characterFrequencyQueue);
+//
+//    decipherAccordingToFrequencies(text, characterFrequencyQueue, "english");
+//}
 
 int main() {
-    string stageOneCipherText = readCipherText(1);
 
-    simpleFrequencyAnalysis(stageOneCipherText);
+    Stage1 stage1;
+
+    stage1.decipher();
 
     return 0;
 }
