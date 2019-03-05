@@ -9,13 +9,14 @@ using namespace std;
 class FitnessMeasure {
 
 public:
-    FitnessMeasure(string ngramFilePath);
+    FitnessMeasure(string ngramFilePath, char delimeter);
     // add destruction method
 
     int score(string text);
 
 private:
     map<string, int> _ngram;
+    char _delimeter;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_FITNESSMEASURE_H

@@ -2,18 +2,6 @@
 #include <fstream>
 #include <iostream>
 
-FitnessMeasure::FitnessMeasure(string ngramFilePath) {
-    ifstream inputFileStream;
+FitnessMeasure::FitnessMeasure(string ngramFilePath, char delimeter) {
 
-    inputFileStream.open(ngramFilePath);
-
-    if (!inputFileStream.good()) {
-        cout << "Failed to open ngram file" << endl;
-    } else {
-        while (!inputFileStream.eof()) {
-            string line;
-            getline(inputFileStream, line);
-            cout << line << endl;
-        }
-    }
 }

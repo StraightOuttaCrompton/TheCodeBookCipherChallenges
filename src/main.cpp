@@ -105,7 +105,7 @@ int main() {
 //
 //    stage1.decipher();
 
-    FitnessMeasure *blah = new FitnessMeasure("test.txt");
+    FitnessMeasure *blah = new FitnessMeasure("test.txt", " ");
 
     return 0;
 }

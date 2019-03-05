@@ -1,0 +1,30 @@
+class FileReader(filename) {
+    public get Lines() // returns vector<string> with each item containing a line
+}
+
+class FileLines(vector<string> lines) {
+    public function convert(function lineCb = (string) => void)
+}
+
+class QuadGram(string quadGramFilePath, char delimeter) {
+    constructor() {
+        private fileReader = new FileReader(quadGramFilePath)
+        private fileLines = new FileLines(fileReader.lines)
+
+        public data: map<string, int>
+
+        fileLines.convert((string line) => {
+            split line by delimeter
+            add item to data
+        })
+
+    }
+
+    public get item(string gramLetters) {
+        return data[gramLetters]
+    }
+}
+
+class FitnessMeasure(QuadGram quadGram) {
+    public score(text) => int
+}
