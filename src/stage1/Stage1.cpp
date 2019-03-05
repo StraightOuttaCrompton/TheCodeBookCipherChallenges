@@ -1,4 +1,5 @@
 #include "Stage1.h"
+#include "../FileReader.h"
 
 Stage1::Stage1() {
     FileReader _fileReader;

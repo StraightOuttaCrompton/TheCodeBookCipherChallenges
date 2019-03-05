@@ -3,7 +3,6 @@
 
 #include <string>
 #include "../frequencyAnalysis/FrequencyAnalysis.h"
-#include "../FileReader.h"
 
 using namespace std;
 

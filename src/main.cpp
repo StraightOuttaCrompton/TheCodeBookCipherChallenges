@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "stage1/Stage1.h"
+#include "fitnessMeasure/FitnessMeasure.h"
 
 using namespace std;
 
@@ -99,10 +100,12 @@ using namespace std;
 //}
 
 int main() {
+//
+//    Stage1 stage1;
+//
+//    stage1.decipher();
 
-    Stage1 stage1;
-
-    stage1.decipher();
+    FitnessMeasure *blah = new FitnessMeasure("test.txt");
 
     return 0;
 }
