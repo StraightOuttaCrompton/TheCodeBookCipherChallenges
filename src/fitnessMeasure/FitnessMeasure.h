@@ -4,6 +4,7 @@
 #include <string>
 #include <map>
 #include "QuadGram.h"
+#include "../lib/StringUtils.h"
 
 class FitnessMeasure {
 
@@ -18,6 +19,7 @@ private:
     double getScore(vector<string> quadGrams);
 
     QuadGram _quadGram;
+    StringUtils _stringUtils;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_FITNESSMEASURE_H

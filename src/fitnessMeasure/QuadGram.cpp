@@ -1,41 +1,10 @@
 #include "QuadGram.h"
-#include <string>
+#include "../lib/FileReader.h"
 #include <iostream>
 #include <stdexcept>
 #include <math.h>
 
 using namespace std;
-
-
-// ********** MOVE TO STRING LIB FILE ********
-#include <algorithm>
-
-string toLowerCase(string str) {
-    transform(str.begin(), str.end(), str.begin(), ::tolower);
-    return str;
-}
-
-vector<string> split(string s, char delimiter) {
-    vector<string> output;
-
-    int last = 0;
-    int next = 0;
-
-    string value;
-
-    while ((next = s.find(delimiter, last)) != string::npos) {
-        value = s.substr(last, next - last);
-        output.push_back(value);
-        last = next + 1;
-    }
-
-    value = s.substr(last);
-    output.push_back(value);
-
-    return output;
-}
-// ***********************************************
-
 
 QuadGram::QuadGram(string quadGramFilePath, char delimiter) {
     _quadGramFilePath = quadGramFilePath;
@@ -56,9 +25,9 @@ void QuadGram::indexFile() {
         string line = *it.base();
 
         vector<string> lineVec;
-        lineVec = split(line, _delimiter);
+        lineVec = _stringUtils.split(line, _delimiter);
 
-        string gramLetters = toLowerCase(lineVec[0]);
+        string gramLetters = _stringUtils.toLowerCase(lineVec[0]);
         int value = stoi(lineVec[1]);
 
         _data.insert(pair<string, int>(gramLetters, value));
@@ -79,7 +48,7 @@ double QuadGram::getLogProbability(string gramletters) {
         throw length_error("Expected gramLetters length to be 4");
     }
 
-    int count = _data.at(toLowerCase(gramletters));
+    int count = _data.at(_stringUtils.toLowerCase(gramletters));
 
     return calculateLogProbability(count);
 }

@@ -1,32 +1,8 @@
 #include "FitnessMeasure.h"
 #include <iostream>
+#include "../lib/StringUtils.h"
 
 using namespace std;
-
-// ***** Move to StringUtils Class
-#include <algorithm>
-
-vector<string> getSubstringsOfLength(string str, int subStrLength) {
-    vector<string> subStrings;
-
-    for (int i = 0; i <= str.length() - subStrLength; ++i) {
-        string subStr = str.substr(i, subStrLength);
-
-        subStrings.push_back(subStr);
-    }
-
-    return subStrings;
-}
-
-string removeChar(string str, char ch) {
-    str.erase(remove(str.begin(), str.end(), ch), str.end());
-    return str;
-}
-
-string removeSpaces(string str) {
-    return removeChar(str, ' ');
-}
-// ************
 
 double FitnessMeasure::test(string text) {
     vector<string> quadGrams = getQuadGrams(text);
@@ -47,7 +23,7 @@ double FitnessMeasure::getScore(vector<string> quadGrams) {
 }
 
 vector<string> FitnessMeasure::getQuadGrams(string text) {
-    text = removeSpaces(text);
+    text = _stringUtils.removeSpaces(text);
 
-    return getSubstringsOfLength(text, 4);
+    return _stringUtils.getSubstringsOfLength(text, 4);
 }

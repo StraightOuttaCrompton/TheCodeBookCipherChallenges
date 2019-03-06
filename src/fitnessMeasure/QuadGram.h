@@ -2,7 +2,9 @@
 #define THECODEBOOKCIPHERCHALLENGES_QUADGRAM_H
 
 #include <map>
-#include "../lib/FileReader.h"
+#include <string>
+
+#include "../lib/StringUtils.h"
 
 class QuadGram {
 public:
@@ -15,6 +17,7 @@ private:
     string _quadGramFilePath;
     char _delimiter;
     int _total;
+    StringUtils _stringUtils;
 
     void indexFile();
 
