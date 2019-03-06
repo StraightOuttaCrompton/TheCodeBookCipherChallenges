@@ -1,22 +1,19 @@
 #ifndef THECODEBOOKCIPHERCHALLENGES_FITNESSMEASURE_H
 #define THECODEBOOKCIPHERCHALLENGES_FITNESSMEASURE_H
 
-using namespace std;
-
 #include <string>
 #include <map>
+#include "QuadGram.h"
 
 class FitnessMeasure {
 
 public:
-    FitnessMeasure(string ngramFilePath, char delimeter);
-    // add destruction method
+    FitnessMeasure(QuadGram _quadGram) : quadGram(_quadGram) {}
 
-    int score(string text);
+    int test(string text);
 
 private:
-    map<string, int> _ngram;
-    char _delimeter;
+    QuadGram quadGram;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_FITNESSMEASURE_H

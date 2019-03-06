@@ -1,7 +1,8 @@
 #include "FitnessMeasure.h"
-#include <fstream>
 #include <iostream>
 
-FitnessMeasure::FitnessMeasure(string ngramFilePath, char delimeter) {
+using namespace std;
 
+int FitnessMeasure::test(string text) {
+    cout << "Score not implemented" << endl;
 }

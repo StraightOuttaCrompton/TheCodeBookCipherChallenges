@@ -14,6 +14,9 @@ public:
             fileName(_fileName) {}
 
     vector<string> getLines();
+
+private:
+    vector<string> _lines;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_FILEREADER_H

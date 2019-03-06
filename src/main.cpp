@@ -99,13 +99,16 @@ using namespace std;
 //    decipherAccordingToFrequencies(text, characterFrequencyQueue, "english");
 //}
 
-int main() {
-//
-//    Stage1 stage1;
-//
-//    stage1.decipher();
+void cb(string line) {
+    cout << line << endl;
+}
 
-    FitnessMeasure *blah = new FitnessMeasure("test.txt", " ");
+int main() {
+    QuadGram quadGram("test.txt", ' ');
+    FitnessMeasure fitnessMeasure(quadGram);
+
+    cout << quadGram.getItem("yooo") << endl;
+//    cout << fitnessMeasure.test("hello world") << endl;
 
     return 0;
 }

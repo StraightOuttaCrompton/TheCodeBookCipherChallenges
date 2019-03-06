@@ -2,17 +2,22 @@
 #include <fstream>
 
 vector<string> FileReader::getLines() {
+    if (!_lines.empty()) {
+        return _lines;
+    }
+
     ifstream file(fileName);
 
-    vector<string> dataList;
+    vector<string> lines;
 
     string line = "";
 
     while (getline(file, line)) {
-        dataList.push_back(line);
+        lines.push_back(line);
     }
 
     file.close();
 
-    return dataList;
+    _lines = lines;
+    return lines;
 }

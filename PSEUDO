@@ -6,15 +6,15 @@ class FileLines(vector<string> lines) {
     public function convert(function lineCb = (string) => void)
 }
 
-class QuadGram(string quadGramFilePath, char delimeter) {
+class QuadGram(string quadGramFilePath, char delimiter) {
     constructor() {
         private fileReader = new FileReader(quadGramFilePath)
         private fileLines = new FileLines(fileReader.lines)
 
         public data: map<string, int>
 
-        fileLines.convert((string line) => {
-            split line by delimeter
+        fileLines.iterateOverLines((string line) => {
+            split line by delimiter
             add item to data
         })
 
