@@ -8,9 +8,7 @@ class QuadGram {
 public:
     QuadGram(string _quadGramFilePath, char _delimiter);
 
-    int getItem(string gramletters);
-
-    int getTotalNumberOfItems();
+    double getLogProbability(string gramletters);
 
 private:
     map<string, int> _data;
@@ -19,7 +17,8 @@ private:
     int _total;
 
     void indexFile();
-//    FileReader *fileReader;
+
+    double calculateLogProbability(int count);
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_QUADGRAM_H

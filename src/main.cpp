@@ -107,8 +107,7 @@ int main() {
     QuadGram quadGram("english_quadgrams.txt", ' ');
     FitnessMeasure fitnessMeasure(quadGram);
 
-    cout << quadGram.getItem("TioN") << endl;
-//    cout << fitnessMeasure.test("hello world") << endl;
+//    fitnessMeasure.test("ATTACK THE EAST WALL OF THE CASTLE AT DAWN"); // -129.24
 
     return 0;
 }

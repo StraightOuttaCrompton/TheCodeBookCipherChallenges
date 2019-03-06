@@ -8,12 +8,14 @@
 class FitnessMeasure {
 
 public:
-    FitnessMeasure(QuadGram _quadGram) : quadGram(_quadGram) {}
+    FitnessMeasure(QuadGram quadGram) : _quadGram(quadGram) {}
 
     int test(string text);
 
 private:
-    QuadGram quadGram;
+//    vector<string> getQuadGrams(string text);
+
+    QuadGram _quadGram;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_FITNESSMEASURE_H

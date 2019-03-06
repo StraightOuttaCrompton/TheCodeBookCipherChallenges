@@ -1,13 +1,15 @@
 #include "QuadGram.h"
-#include <algorithm>
 #include <string>
 #include <iostream>
 #include <stdexcept>
+#include <math.h>
 
 using namespace std;
 
 
 // ********** MOVE TO STRING LIB FILE ********
+#include <algorithm>
+
 string toLowerCase(string str) {
     transform(str.begin(), str.end(), str.begin(), ::tolower);
     return str;
@@ -66,14 +68,18 @@ void QuadGram::indexFile() {
     cout << "Indexing completed" << endl;
 }
 
-int QuadGram::getItem(string gramletters) {
+double QuadGram::calculateLogProbability(int count) {
+    double p = (double) count / (double) _total;
+
+    return log(p);
+}
+
+double QuadGram::getLogProbability(string gramletters) {
     if (gramletters.size() != 4) {
         throw length_error("Expected gramLetters length to be 4");
     }
 
-    return _data.at(toLowerCase(gramletters));
-}
+    int count = _data.at(toLowerCase(gramletters));
 
-int QuadGram::getTotalNumberOfItems() {
-    return _total;
+    return calculateLogProbability(count);
 }
