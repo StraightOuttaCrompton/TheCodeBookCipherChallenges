@@ -31,14 +31,13 @@ public:
 private:
     int _size;
 
-    // map<fitness, chromosome>>
+    int _numberOfParents = 4;
+
     priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare> _currentPopulation;
 
-    void CullUnfit();
+    void selectFittestParents();
 
-//    void Crossover();
-
-    void Mutation();
+    void generateChildren();
 
     void getInitialPopulation();
 

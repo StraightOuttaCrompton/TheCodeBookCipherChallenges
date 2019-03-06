@@ -33,29 +33,25 @@ Population::Population(int size) {
 }
 
 void Population::next() {
-    CullUnfit();
-//     Crossover
-    Mutation();
+    selectFittestParents();
+    generateChildren();
 }
 
-void Population::CullUnfit() {
-    _currentPopulation = getFirstNItems(4, _currentPopulation);
+void Population::selectFittestParents() {
+    _currentPopulation = getFirstNItems(_numberOfParents, _currentPopulation);
 }
 
-void Population::Mutation() {
-
+void Population::generateChildren() {
+    // generate 4 children from 4 parents. 2 children for each pair of parents
+    // mutatechildren randomly
+    // fitness should be assigned to chromosome already
 }
-
-//void Population::Crossover() {
-//}
 
 Chromosome Population::getFittest() {
 
 }
 
 void Population::getInitialPopulation() {
-
-
     cout << "getInitialPopulation not implemented" << endl;
 
 
@@ -65,7 +61,6 @@ void Population::getInitialPopulation() {
         Chromosome chromosome("abcdefghijklmnopqrstuvwxyz");
 
         population.push(chromosome);
-//        population.insert(pair<double, Chromosome>(fitness, chromosome));
     }
 
     _currentPopulation = population;
