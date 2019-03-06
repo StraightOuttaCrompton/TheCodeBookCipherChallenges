@@ -10,10 +10,13 @@ public:
 
     int getItem(string gramletters);
 
+    int getTotalNumberOfItems();
+
 private:
     map<string, int> _data;
     string _quadGramFilePath;
     char _delimiter;
+    int _total;
 
     void indexFile();
 //    FileReader *fileReader;

@@ -45,6 +45,8 @@ QuadGram::QuadGram(string quadGramFilePath, char delimiter) {
 void QuadGram::indexFile() {
     cout << "Indexing quadgram " + _quadGramFilePath + "..." << endl;
 
+    _total = 0;
+
     FileReader fileReader(_quadGramFilePath);
     vector<string> lines = fileReader.getLines();
 
@@ -58,6 +60,7 @@ void QuadGram::indexFile() {
         int value = stoi(lineVec[1]);
 
         _data.insert(pair<string, int>(gramLetters, value));
+        _total++;
     }
 
     cout << "Indexing completed" << endl;
@@ -69,4 +72,8 @@ int QuadGram::getItem(string gramletters) {
     }
 
     return _data.at(toLowerCase(gramletters));
+}
+
+int QuadGram::getTotalNumberOfItems() {
+    return _total;
 }
