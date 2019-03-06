@@ -101,15 +101,15 @@ using namespace std;
 
 
 int main() {
-    QuadGram quadGram("english_quadgrams.txt", ' ');
-    FitnessMeasure fitnessMeasure(quadGram);
+//    QuadGram quadGram("english_quadgrams.txt", ' ');
+//    FitnessMeasure fitnessMeasure(quadGram);
+    Populatio<string>(size)
 
-    double score1 = fitnessMeasure.test(
-            "ATTACK THE EAST WALL OF THE CASTLE AT DAWN we shall win this fight"); // -129.24
-    double score2 = fitnessMeasure.test("ATTACK"); // -129.24
+    while (!hasConverged(p.fittest)) {
+        p.next()
+    }
 
-    cout << score1 << endl;
-    cout << score2 << endl;
+    console.log("Best is " + p.fittest)
 
     return 0;
 }
