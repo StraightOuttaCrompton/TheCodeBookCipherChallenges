@@ -99,15 +99,17 @@ using namespace std;
 //    decipherAccordingToFrequencies(text, characterFrequencyQueue, "english");
 //}
 
-void cb(string line) {
-    cout << line << endl;
-}
 
 int main() {
     QuadGram quadGram("english_quadgrams.txt", ' ');
     FitnessMeasure fitnessMeasure(quadGram);
 
-//    fitnessMeasure.test("ATTACK THE EAST WALL OF THE CASTLE AT DAWN"); // -129.24
+    double score1 = fitnessMeasure.test(
+            "ATTACK THE EAST WALL OF THE CASTLE AT DAWN we shall win this fight"); // -129.24
+    double score2 = fitnessMeasure.test("ATTACK"); // -129.24
+
+    cout << score1 << endl;
+    cout << score2 << endl;
 
     return 0;
 }

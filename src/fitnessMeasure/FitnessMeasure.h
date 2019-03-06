@@ -10,10 +10,12 @@ class FitnessMeasure {
 public:
     FitnessMeasure(QuadGram quadGram) : _quadGram(quadGram) {}
 
-    int test(string text);
+    double test(string text);
 
 private:
-//    vector<string> getQuadGrams(string text);
+    vector<string> getQuadGrams(string text);
+
+    double getScore(vector<string> quadGrams);
 
     QuadGram _quadGram;
 };
