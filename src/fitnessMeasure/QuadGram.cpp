@@ -1,9 +1,17 @@
 #include "QuadGram.h"
+#include <algorithm>
 #include <string>
 #include <iostream>
 #include <stdexcept>
 
 using namespace std;
+
+
+// ********** MOVE TO STRING LIB FILE ********
+string toLowerCase(string str) {
+    transform(str.begin(), str.end(), str.begin(), ::tolower);
+    return str;
+}
 
 vector<string> split(string s, char delimiter) {
     vector<string> output;
@@ -24,9 +32,18 @@ vector<string> split(string s, char delimiter) {
 
     return output;
 }
+// ***********************************************
 
-QuadGram::QuadGram(string _quadGramFilePath, char _delimiter) {
-    delimiter = _delimiter;
+
+QuadGram::QuadGram(string quadGramFilePath, char delimiter) {
+    _quadGramFilePath = quadGramFilePath;
+    _delimiter = delimiter;
+
+    indexFile();
+}
+
+void QuadGram::indexFile() {
+    cout << "Indexing quadgram " + _quadGramFilePath + "..." << endl;
 
     FileReader fileReader(_quadGramFilePath);
     vector<string> lines = fileReader.getLines();
@@ -35,26 +52,21 @@ QuadGram::QuadGram(string _quadGramFilePath, char _delimiter) {
         string line = *it.base();
 
         vector<string> lineVec;
-        lineVec = split(line, delimiter);
+        lineVec = split(line, _delimiter);
 
-        string gramLetters = lineVec[0];
+        string gramLetters = toLowerCase(lineVec[0]);
         int value = stoi(lineVec[1]);
 
-        data.insert(pair<string, int>(gramLetters, value));
+        _data.insert(pair<string, int>(gramLetters, value));
     }
+
+    cout << "Indexing completed" << endl;
 }
 
 int QuadGram::getItem(string gramletters) {
     if (gramletters.size() != 4) {
-        throw invalid_argument("Expected gramLetters length to be 4");
+        throw length_error("Expected gramLetters length to be 4");
     }
 
-    int value;
-    try {
-        value = data.at(gramletters);
-    } catch (const out_of_range &e) {
-        value = 1;
-    }
-
-    return value;
+    return _data.at(toLowerCase(gramletters));
 }

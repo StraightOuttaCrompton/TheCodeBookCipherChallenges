@@ -7,15 +7,16 @@
 using namespace std;
 
 class FileReader {
-    string fileName;
-
 public:
-    FileReader(string _fileName) :
-            fileName(_fileName) {}
+    FileReader(string fileName) :
+            _fileName(fileName) {}
 
     vector<string> getLines();
 
 private:
+    void populateLines();
+
+    string _fileName;
     vector<string> _lines;
 };
 

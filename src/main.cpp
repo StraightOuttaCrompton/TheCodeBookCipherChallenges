@@ -104,10 +104,10 @@ void cb(string line) {
 }
 
 int main() {
-    QuadGram quadGram("test.txt", ' ');
+    QuadGram quadGram("english_quadgrams.txt", ' ');
     FitnessMeasure fitnessMeasure(quadGram);
 
-    cout << quadGram.getItem("yooo") << endl;
+    cout << quadGram.getItem("TioN") << endl;
 //    cout << fitnessMeasure.test("hello world") << endl;
 
     return 0;

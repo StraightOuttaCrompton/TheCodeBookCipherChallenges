@@ -6,7 +6,13 @@ vector<string> FileReader::getLines() {
         return _lines;
     }
 
-    ifstream file(fileName);
+    populateLines();
+
+    return _lines;
+}
+
+void FileReader::populateLines() {
+    ifstream file(_fileName);
 
     vector<string> lines;
 
@@ -18,6 +24,9 @@ vector<string> FileReader::getLines() {
 
     file.close();
 
+    if (lines.empty()) {
+        throw invalid_argument("No lines in file " + _fileName);
+    }
+
     _lines = lines;
-    return lines;
 }

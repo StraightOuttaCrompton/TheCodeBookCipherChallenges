@@ -11,9 +11,12 @@ public:
     int getItem(string gramletters);
 
 private:
-    map<string, int> data;
-    char delimiter;
-    FileReader *fileReader;
+    map<string, int> _data;
+    string _quadGramFilePath;
+    char _delimiter;
+
+    void indexFile();
+//    FileReader *fileReader;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_QUADGRAM_H
