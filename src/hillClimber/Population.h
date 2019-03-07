@@ -15,10 +15,11 @@ class Population {
 public:
     Population(int size, Individual *individual);
 
-    void next();
+    void Next();
 
-    bool hasConverged();
+    bool HasConverged();
 
+    void PrintPopulation();
 
 private:
     int _size;

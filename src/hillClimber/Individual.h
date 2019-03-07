@@ -16,6 +16,7 @@ public:
 
     Chromosome *getChromosome();
 
+
 private:
     Chromosome *_chromosome;
     Fitness *_fitness;

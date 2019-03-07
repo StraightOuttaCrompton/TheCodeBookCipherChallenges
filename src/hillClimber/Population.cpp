@@ -28,9 +28,11 @@ Population::Population(int size, Individual *individual) {
     getInitialPopulation();
 }
 
-void Population::next() {
+void Population::Next() {
     keepFittestParents();
     generateChildren();
+
+    cout << "yay" << endl;
 }
 
 void Population::keepFittestParents() {
@@ -55,10 +57,16 @@ void Population::generateChildren() {
         _currentPopulation.push(*c1);
         _currentPopulation.push(*c2);
     }
+
+    while (_currentPopulation.size() < _size) {
+        Individual *individual = _individual->NewIndividual();
+
+        _currentPopulation.push(*individual);
+    }
 }
 
 
-bool Population::hasConverged() {
+bool Population::HasConverged() {
     return false;
 }
 
@@ -71,6 +79,17 @@ void Population::getInitialPopulation() {
     }
 
     _currentPopulation = population;
+}
+
+// http://www.cplusplus.com/forum/general/209015/
+void Population::PrintPopulation() {
+    priority_queue<Individual, vector<Individual>, IndividualCompare> toPrint = _currentPopulation;
+
+    while (!toPrint.empty()) {
+        Individual top = toPrint.top();
+        cout << top.getChromosome()->getValue() << " : " << top.getFitnessScore() << endl;
+        toPrint.pop();
+    }
 }
 
 

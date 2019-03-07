@@ -114,10 +114,17 @@ int main() {
 
     Population p(10, individual);
 
-    p.next();
+    p.Next();
 
-//    while (!p.hasConverged()) {
-//        p.next();
+    p.PrintPopulation();
+
+    cout << "--------------" << endl;
+
+    p.Next();
+    p.PrintPopulation();
+
+//    while (!p.HasConverged()) {
+//        p.Next();
 //    }
 
     return 0;
