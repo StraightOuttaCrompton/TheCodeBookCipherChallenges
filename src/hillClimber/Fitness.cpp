@@ -3,8 +3,6 @@
 
 using namespace std;
 
-#include "iostream";
-
 Fitness::Fitness() {}
 
 double Fitness::Score(string chromosome) {

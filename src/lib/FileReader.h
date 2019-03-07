@@ -8,16 +8,22 @@ using namespace std;
 
 class FileReader {
 public:
-    FileReader(string fileName) :
-            _fileName(fileName) {}
+    FileReader(string fileName);
 
     vector<string> getLines();
 
+    string getAsString();
+
 private:
-    void populateLines();
+    void readFile();
+
+    void clearData();
+
+    void storeLine(string line);
 
     string _fileName;
     vector<string> _lines;
+    string _asString;
 };
 
 #endif //THECODEBOOKCIPHERCHALLENGES_FILEREADER_H

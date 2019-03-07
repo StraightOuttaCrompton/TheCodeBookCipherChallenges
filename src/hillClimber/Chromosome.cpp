@@ -2,10 +2,13 @@
 #include "Chromosome.h"
 
 #include "iostream";
+#include "../lib/StringUtils.h"
 
 Chromosome::Chromosome(string space) {
-    _space = space;
-    _value = getRandomChromosome(space);
+    // chromspace toLower?
+    StringUtils *stringUtils = new StringUtils();
+    _space = stringUtils->toLowerCase(space);
+    _value = getRandomChromosome(_space);
 }
 
 Chromosome::Chromosome(string space, string value) {
@@ -21,9 +24,9 @@ string Chromosome::getSpace() {
     return _space;
 }
 
-string Chromosome::getRandomChromosome(string chromosomeSpace) {
-    random_shuffle(chromosomeSpace.begin(), chromosomeSpace.end());
-    return chromosomeSpace;
+string Chromosome::getRandomChromosome(string space) {
+    random_shuffle(space.begin(), space.end());
+    return space;
 }
 
 

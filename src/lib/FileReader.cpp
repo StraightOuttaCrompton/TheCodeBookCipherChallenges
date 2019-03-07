@@ -1,32 +1,54 @@
 #include "FileReader.h"
 #include <fstream>
 
+FileReader::FileReader(string fileName) {
+    _fileName = fileName;
+    readFile();
+}
+
+string FileReader::getAsString() {
+    if (_asString.size() > 0) {
+        return _asString;
+    }
+
+    readFile();
+
+    return _asString;
+}
+
 vector<string> FileReader::getLines() {
     if (!_lines.empty()) {
         return _lines;
     }
 
-    populateLines();
+    readFile();
 
     return _lines;
 }
 
-void FileReader::populateLines() {
+void FileReader::readFile() {
     ifstream file(_fileName);
 
-    vector<string> lines;
+    clearData();
 
     string line = "";
-
     while (getline(file, line)) {
-        lines.push_back(line);
+        storeLine(line);
     }
 
     file.close();
 
-    if (lines.empty()) {
+    if (_lines.empty()) {
         throw invalid_argument("No lines in file " + _fileName);
     }
+}
 
-    _lines = lines;
+void FileReader::clearData() {
+    _lines.clear();
+    _asString = "";
+}
+
+void FileReader::storeLine(string line) {
+    _lines.push_back(line);
+    _asString += " " + line;
 }
