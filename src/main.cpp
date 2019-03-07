@@ -3,7 +3,8 @@
 #include <string>
 #include <vector>
 #include "stage1/Stage1.h"
-#include "fitnessMeasure/FitnessMeasure.h"
+#include "hillClimber/Population.h"
+#include "hillClimber/Fitness.h"
 
 using namespace std;
 
@@ -103,13 +104,21 @@ using namespace std;
 int main() {
 //    QuadGram quadGram("english_quadgrams.txt", ' ');
 //    FitnessMeasure fitnessMeasure(quadGram);
-    Populatio<string>(size)
 
-    while (!hasConverged(p.fittest)) {
-        p.next()
-    }
+    Fitness *fitness = new Fitness;
+//    Fitness fitness();
+    string alphabet = "abcdefghijklmnopqrstuvwxyz";
+    Chromosome *chromosome = new Chromosome(alphabet);
 
-    console.log("Best is " + p.fittest)
+    Individual *individual = new Individual(chromosome, fitness);
+
+    Population p(10, individual);
+
+    p.next();
+
+//    while (!p.hasConverged()) {
+//        p.next();
+//    }
 
     return 0;
 }

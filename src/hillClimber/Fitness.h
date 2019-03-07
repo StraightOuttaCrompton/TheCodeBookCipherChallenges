@@ -9,7 +9,7 @@ class Fitness {
 public:
     Fitness();
 
-    double Test(string chromosome);
+    double Score(string chromosome);
 };
 
 

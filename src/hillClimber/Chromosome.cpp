@@ -1,26 +1,54 @@
+#include <algorithm>
 #include "Chromosome.h"
 
 #include "iostream";
 
-Chromosome::Chromosome(string chromosomeSpace) {
-    _chromosome = getRandomChromosome(chromosomeSpace);
+Chromosome::Chromosome(string space) {
+    _space = space;
+    _value = getRandomChromosome(space);
+}
 
-    //    _fitness = claculateFitness(); use callback function?
+Chromosome::Chromosome(string space, string value) {
+    _space = space;
+    _value = value;
+}
+
+string Chromosome::getValue() {
+    return _value;
+}
+
+string Chromosome::getSpace() {
+    return _space;
 }
 
 string Chromosome::getRandomChromosome(string chromosomeSpace) {
-    return "getRandomChromosome not implemented";
+    random_shuffle(chromosomeSpace.begin(), chromosomeSpace.end());
+    return chromosomeSpace;
 }
 
-string Chromosome::getChromosome() {
-    return _chromosome;
+
+Chromosome *Chromosome::newChromosome() {
+    return new Chromosome(_space);
 }
 
-double claculateFitness() {
-    cout << "calculate fitness not implemented yet" << endl;
-    return 0;
+Chromosome *Chromosome::reproduce(Chromosome *so) {
+    if (_space != so->getSpace()) {
+        throw invalid_argument("Individuals must be from the same chromosome space to reproduce");
+    }
+
+    string mergedChromosome = merge(_value, so->getValue());
+    string mutatedChromosome = mutate(mergedChromosome);
+
+    return new Chromosome(_space, mutatedChromosome);
 }
 
-double Chromosome::getFitness() {
-    return 0;
+
+string Chromosome::mutate(string input) {
+    cout << "Mutate not implemented" << endl;
+    return input;
+}
+
+string Chromosome::merge(string c1, string c2) {
+    cout << "merge not implemented" << endl;
+    return c1;
 }

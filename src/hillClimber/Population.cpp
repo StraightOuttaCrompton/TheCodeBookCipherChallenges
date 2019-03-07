@@ -1,16 +1,17 @@
 #include "Population.h"
+#include "Individual.h"
 
-// ******* Multimap Utils *********
-priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare>
-getFirstNItems(int N, priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare> pq) {
+// ******* priority_queue Utils *********
+priority_queue<Individual, vector<Individual>, IndividualCompare>
+getFirstNItems(int N, priority_queue<Individual, vector<Individual>, IndividualCompare> pq) {
     if (pq.size() <= N) {
         return pq;
     }
 
-    priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare> output;
+    priority_queue<Individual, vector<Individual>, IndividualCompare> output;
 
     for (int i = 0; i < N; ++i) {
-        Chromosome top = pq.top();
+        Individual top = pq.top();
         pq.pop();
         output.push(top);
     }
@@ -20,50 +21,57 @@ getFirstNItems(int N, priority_queue<Chromosome, vector<Chromosome>, ChromosomeC
 // **********************************************
 
 
-Population::Population() {
-    _size = 10;
-
-    getInitialPopulation();
-}
-
-Population::Population(int size) {
+Population::Population(int size, Individual *individual) {
     _size = size;
+    _individual = individual;
 
     getInitialPopulation();
 }
 
 void Population::next() {
-    selectFittestParents();
+    keepFittestParents();
     generateChildren();
 }
 
-void Population::selectFittestParents() {
+void Population::keepFittestParents() {
     _currentPopulation = getFirstNItems(_numberOfParents, _currentPopulation);
 }
 
 void Population::generateChildren() {
     // generate 4 children from 4 parents. 2 children for each pair of parents
-    // mutatechildren randomly
     // fitness should be assigned to chromosome already
+
+    priority_queue<Individual, vector<Individual>, IndividualCompare> parents = _currentPopulation;
+
+    while (parents.size() > 1) {
+        Individual p1 = parents.top();
+        parents.pop();
+        Individual p2 = parents.top();
+        parents.pop();
+
+        Individual *c1 = p1.CreateChild(p2);
+        Individual *c2 = p2.CreateChild(p1);
+
+        _currentPopulation.push(*c1);
+        _currentPopulation.push(*c2);
+    }
 }
 
-Chromosome Population::getFittest() {
 
+bool Population::hasConverged() {
+    return false;
 }
 
 void Population::getInitialPopulation() {
-    cout << "getInitialPopulation not implemented" << endl;
-
-
-    priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare> population;
+    priority_queue<Individual, vector<Individual>, IndividualCompare> population;
 
     for (int i = 0; i < _size; ++i) {
-        Chromosome chromosome("abcdefghijklmnopqrstuvwxyz");
-
-        population.push(chromosome);
+        Individual c = *_individual->NewIndividual();
+        population.push(c);
     }
 
     _currentPopulation = population;
 }
+
 
 

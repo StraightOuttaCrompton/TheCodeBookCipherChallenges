@@ -4,8 +4,10 @@ using namespace std;
 
 #include "iostream";
 
-double Fitness::Test(string chromosome) {
+Fitness::Fitness() {}
+
+double Fitness::Score(string chromosome) {
     cout << "Fitness test not implemented yet" << endl;
 
-    return 0;
+    return ((double) rand() / (RAND_MAX));
 }

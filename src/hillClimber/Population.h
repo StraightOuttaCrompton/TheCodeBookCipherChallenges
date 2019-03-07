@@ -3,29 +3,21 @@
 
 #include <vector>
 #include <queue>
-#include "Chromosome.h"
 #include "iostream"
+#include "Individual.h"
 
 using namespace std;
 
-class ChromosomeCompare {
-public:
-    bool operator()(Chromosome, Chromosome) {
-        cout << "ChromosomeCompare not implemented" << endl;
-        return true;
-    }
-};
+// create type for priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare>
+// repeated way too much
 
 class Population {
 public:
-    Population();
-
-    Population(int size);
+    Population(int size, Individual *individual);
 
     void next();
 
-    // chromosome
-    Chromosome getFittest();
+    bool hasConverged();
 
 
 private:
@@ -33,9 +25,11 @@ private:
 
     int _numberOfParents = 4;
 
-    priority_queue<Chromosome, vector<Chromosome>, ChromosomeCompare> _currentPopulation;
+    Individual *_individual;
 
-    void selectFittestParents();
+    priority_queue<Individual, vector<Individual>, IndividualCompare> _currentPopulation;
+
+    void keepFittestParents();
 
     void generateChildren();
 
