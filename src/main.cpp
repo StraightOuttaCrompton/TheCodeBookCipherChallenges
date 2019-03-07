@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include "ciphers/SubstitutionCipher.h"
+#include "stages/Stage1.h"
+#include "stages/Stage2.h"
 
 using namespace std;
 
@@ -34,10 +36,17 @@ int main() {
 //    }
 
 
-    SubstitutionCipher *substitutionCipher = new SubstitutionCipher(alphabet, "./cipherTexts/test.txt");
-    string text = substitutionCipher->Decipher("phqgiumeaylnofdxjkrcvstzwb");
 
-    cout << text << endl;
+
+//    SubstitutionCipher *substitutionCipher = new SubstitutionCipher(alphabet, "./cipherTexts/test.txt");
+//    string text = substitutionCipher->Decipher("phqgiumeaylnofdxjkrcvstzwb");
+//
+//    cout << text << endl;
+
+    Stage1 *currentStage = new Stage1();
+
+    currentStage->Execute();
+
 
     return 0;
 }
