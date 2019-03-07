@@ -1,8 +1,6 @@
 #include <iostream>
 
 #include <string>
-#include <vector>
-#include "stage1/Stage1.h"
 #include "hillClimber/Population.h"
 #include "hillClimber/Fitness.h"
 
@@ -103,10 +101,10 @@ using namespace std;
 
 int main() {
 //    QuadGram quadGram("english_quadgrams.txt", ' ');
-//    FitnessMeasure fitnessMeasure(quadGram);
+//    FitnessMeasure *fitnessMeasure = new FitnessMeasure(quadGram);
 
-    Fitness *fitness = new Fitness;
-//    Fitness fitness();
+    Fitness *fitness = new Fitness();
+
     string alphabet = "abcdefghijklmnopqrstuvwxyz";
     Chromosome *chromosome = new Chromosome(alphabet);
 
