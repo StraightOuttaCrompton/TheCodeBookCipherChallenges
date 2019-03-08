@@ -3,42 +3,38 @@
 #include "../alphabets/Alphabet.h"
 #include "../ciphers/MonoAlphabeticSubstitutionCipher.h"
 
-template<class T>
-class IDemo {
-public:
-    virtual ~IDemo() {}
-
-    virtual void OverrideMe(T key) = 0;
-};
-
-template<class S>
-class Child : IDemo<S> {
-public:
-    virtual void OverrideMe(S key) {
-        //do stuff
-        cout << "OverrideMe" << endl;
-    }
-};
+//template<class T>
+//class IDemo {
+//public:
+//    virtual ~IDemo() {}
+//
+//    virtual void OverrideMe(T key) = 0;
+//};
+//
+//template<class S>
+//class Child : IDemo<S> {
+//public:
+//    virtual void OverrideMe(S key) {
+//        //do stuff
+//        cout << "OverrideMe" << endl;
+//    }
+//};
 
 void Stage1::Execute() {
-    cout << "Execute Stage1" << endl;
-    cout << "Simple Monoalphabetic Substitution Cipher" << endl;
-//
-//    Alphabet *alphabet = new Alphabet();
-//    const string a = alphabet->getSimpleEnglishAlphabet();
-
 //    Child<string> child();
 //    child().OverrideMe("test");
 
-//    Child *child = new Child();
-//    child->OverrideMe();
 
+    cout << "Execute Stage1" << endl;
+    cout << "Simple Monoalphabetic Substitution Cipher" << endl;
 
-    MonoAlphabeticSubstitutionCipher monoAlphabeticSubstitutionCipher("alphabet");
-    monoAlphabeticSubstitutionCipher.Decipher("hello");
+    Alphabet alphabet;
+    const string a = alphabet.getSimpleEnglishAlphabet();
 
-    //    MonoAlphabeticSubstitutionCipher<string> *monoAlphabeticSubstitutionCipher = new MonoAlphabeticSubstitutionCipher<string>("possible", "ciphertext");
+    MonoAlphabeticSubstitutionCipher monoAlphabeticSubstitutionCipher(a, "giuifg cei iprc tpnn du cei qprcni");
 
+    string decipheredText = monoAlphabeticSubstitutionCipher.Decipher("phqgiumeaylnofdxjkrcvstzwb");
+    cout << decipheredText << endl;
 
 
 
