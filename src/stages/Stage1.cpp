@@ -2,6 +2,8 @@
 #include "iostream"
 #include "../alphabets/Alphabet.h"
 #include "../ciphers/MonoAlphabeticSubstitutionCipher.h"
+#include "../geneticAlgorithm/Chromosome.h"
+#include "../alphabets/Language.h"
 
 //template<class T>
 //class IDemo {
@@ -22,21 +24,57 @@
 
 void Stage1::Execute() {
 //    Child<string> child();
-//    child().OverrideMe("test");
-
+//    string test = "test";
 
     cout << "Execute Stage1" << endl;
     cout << "Simple Monoalphabetic Substitution Cipher" << endl;
 
+    Language lang = ENGLISH;
+
     Alphabet alphabet;
-    const string a = alphabet.getSimpleEnglishAlphabet();
+    const string englishAlphabet = alphabet.getAlphabetForLanguage(lang);
 
-    MonoAlphabeticSubstitutionCipher monoAlphabeticSubstitutionCipher(a, "giuifg cei iprc tpnn du cei qprcni");
+//    MonoAlphabeticSubstitutionCipher monoAlphabeticSubstitutionCipher(englishAlphabet,
+//                                                                      "giuifg cei iprc tpnn du cei qprcni");
+//
+//    string decipheredText = monoAlphabeticSubstitutionCipher.Decipher("phqgiumeaylnofdxjkrcvstzwb");
+//    cout << decipheredText << endl;
 
-    string decipheredText = monoAlphabeticSubstitutionCipher.Decipher("phqgiumeaylnofdxjkrcvstzwb");
-    cout << decipheredText << endl;
+
+//    string reverseAlphabet = "zyxwvutsrqponmlkjihgfedcba";
 
 
+//    QuadGram quadGram("english_quadgrams.txt", ' ');
+//    FitnessMeasure *fitnessMeasure = new FitnessMeasure(quadGram);
+
+//    Fitness *fitness = new Fitness();
+//
+//    Chromosome *chromosome = new Chromosome(englishAlphabet);
+//
+//    Individual *individual = new Individual(chromosome, fitness);
+//
+//    Population p(10, individual);
+//
+//    p.Next();
+//
+//    p.PrintPopulation();
+//
+//    cout << "--------------" << endl;
+//
+//    p.Next();
+//    p.PrintPopulation();
+
+//    while (!p.HasConverged()) {
+//        p.Next();
+//    }
+
+
+
+
+//    SubstitutionCipher *substitutionCipher = new SubstitutionCipher(alphabet, "./cipherTexts/test.txt");
+//    string text = substitutionCipher->Decipher("phqgiumeaylnofdxjkrcvstzwb");
+//
+//    cout << text << endl;
 
 
 

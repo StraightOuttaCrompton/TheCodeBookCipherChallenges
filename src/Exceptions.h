@@ -1,0 +1,13 @@
+#ifndef THECODEBOOKCIPHERCHALLENGES_EXCEPTIONS_H
+#define THECODEBOOKCIPHERCHALLENGES_EXCEPTIONS_H
+
+#include <stdexcept>
+
+using namespace std;
+
+class NotImplemented : public logic_error {
+public:
+    NotImplemented() : logic_error("Function not yet implemented") {};
+};
+
+#endif //THECODEBOOKCIPHERCHALLENGES_EXCEPTIONS_H

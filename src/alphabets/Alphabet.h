@@ -2,16 +2,18 @@
 #define THECODEBOOKCIPHERCHALLENGES_ALPHABET_H
 
 
+#include <map>
 #include "../lib/FileReader.h"
+#include "Language.h"
 
 class Alphabet {
 public:
-    string getSimpleEnglishAlphabet();
+    string getAlphabetForLanguage(Language lang);
 
 private:
-    string getAlphabet(string filePath);
+    map<Language, string> _cachedLanguages;
 
-    string _english_alphabet_simple;
+    string getAlphabet(string filePath);
 };
 
 

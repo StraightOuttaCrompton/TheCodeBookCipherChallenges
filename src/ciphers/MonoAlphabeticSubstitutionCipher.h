@@ -5,8 +5,11 @@
 #include <string>
 #include <map>
 
+
 class MonoAlphabeticSubstitutionCipher : public Cipher<string> {
 public:
+    MonoAlphabeticSubstitutionCipher(string alphabet) : _alphabet(alphabet) {}
+
     MonoAlphabeticSubstitutionCipher(string alphabet, string cipherText) : _alphabet(alphabet),
                                                                            _cipherText(cipherText) {}
 
