@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
-#include "ciphers/SubstitutionCipher.h"
 #include "stages/Stage1.h"
-#include "stages/Stage2.h"
 
 using namespace std;
 

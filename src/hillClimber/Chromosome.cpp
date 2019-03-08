@@ -1,7 +1,7 @@
 #include <algorithm>
 #include "Chromosome.h"
 
-#include "iostream";
+#include "iostream"
 #include "../lib/StringUtils.h"
 
 Chromosome::Chromosome(string space) {
