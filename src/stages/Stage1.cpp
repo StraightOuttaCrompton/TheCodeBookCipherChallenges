@@ -4,35 +4,56 @@
 #include "../ciphers/MonoAlphabeticSubstitutionCipher.h"
 #include "../geneticAlgorithm/Chromosome.h"
 #include "../alphabets/Language.h"
+#include "../ciphers/AlphabeticChromosomeGenerator.h"
 
 //template<class T>
-//class IDemo {
+//class IChro {
 //public:
-//    virtual ~IDemo() {}
+//    virtual ~IChro() = default;
+//
+//    virtual T GetHello() = 0;
 //
 //    virtual void OverrideMe(T key) = 0;
+//
 //};
 //
-//template<class S>
-//class Child : IDemo<S> {
+//template<class T>
+//class Chro : IChro<T> {
 //public:
-//    virtual void OverrideMe(S key) {
-//        //do stuff
-//        cout << "OverrideMe" << endl;
+//    Chro(T _hello) : _hello(_hello) {}
+//
+//    T GetHello() override {
+//        cout << "Chro GetHello" << endl;
+//        return _hello;
+//    }
+//
+//private:
+//    T _hello;
+//};
+//
+//class AlphabetChro : Chro<string> {
+//public:
+//    AlphabetChro() : Chro("hello") {}
+//
+//    void OverrideMe() {
+//        cout << "Override me" << endl;
+//        string hello;
+//        hello = GetHello();
+//        cout << hello << endl;
 //    }
 //};
 
 void Stage1::Execute() {
-//    Child<string> child();
-//    string test = "test";
+//    AlphabetChro *alphabetChro;
+//    alphabetChro->OverrideMe();
+
+
 
     cout << "Execute Stage1" << endl;
     cout << "Simple Monoalphabetic Substitution Cipher" << endl;
 
-    Language lang = ENGLISH;
-
     Alphabet alphabet;
-    const string englishAlphabet = alphabet.getAlphabetForLanguage(lang);
+    const string englishAlphabet = alphabet.getAlphabetForLanguage(ENGLISH);
 
 //    MonoAlphabeticSubstitutionCipher monoAlphabeticSubstitutionCipher(englishAlphabet,
 //                                                                      "giuifg cei iprc tpnn du cei qprcni");
@@ -44,12 +65,13 @@ void Stage1::Execute() {
 //    string reverseAlphabet = "zyxwvutsrqponmlkjihgfedcba";
 
 
-//    QuadGram quadGram("english_quadgrams.txt", ' ');
+//    QuadGram quadGram("english_quadgrams.txt", ' '); // pass language to quadgram?
 //    FitnessMeasure *fitnessMeasure = new FitnessMeasure(quadGram);
 
 //    Fitness *fitness = new Fitness();
 //
-//    Chromosome *chromosome = new Chromosome(englishAlphabet);
+
+    AlphabeticChromosomeGenerator chroGen(englishAlphabet);
 //
 //    Individual *individual = new Individual(chromosome, fitness);
 //

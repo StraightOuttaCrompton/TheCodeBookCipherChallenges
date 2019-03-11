@@ -1,12 +1,12 @@
 #ifndef THECODEBOOKCIPHERCHALLENGES_MONOALPHABETICSUBSTITUTIONCIPHER_H
 #define THECODEBOOKCIPHERCHALLENGES_MONOALPHABETICSUBSTITUTIONCIPHER_H
 
-#include "Cipher.h"
+#include "ICipher.h"
 #include <string>
 #include <map>
 
 
-class MonoAlphabeticSubstitutionCipher : public Cipher<string> {
+class MonoAlphabeticSubstitutionCipher : public ICipher<string> {
 public:
     MonoAlphabeticSubstitutionCipher(string alphabet) : _alphabet(alphabet) {}
 

@@ -5,37 +5,28 @@ using namespace std;
 
 #include <string>
 #include "Fitness.h"
+#include "IChromosome.h"
 
-// in our case T will be string
-class Chromosome {
+template<class T>
+class Chromosome : public IChromosome<T> {
 public:
-    Chromosome(string space);
+    void setValue(T value);
 
-    Chromosome(string space, string value);
-
-    Chromosome *newChromosome();
-
-
-    string getValue();
-
-    string getSpace();
-
-    // Virtual function in base class?
-    Chromosome *reproduce(Chromosome *so);
+    void setSpace(T space);
 
 
 private:
-    string _space;
-    string _value;
+    T _space;
+    T _value;
 
-    // Virtual functions in base class?
-    string getRandomChromosome(string chromosomeSpace);
-
-    // Virtual function in base class?
-    string merge(string c1, string c2);
-
-    // Virtual function in base class?
-    string mutate(string input);
+//
+//    // Virtual functions in base class?
+//
+//    // Virtual function in base class?
+//    string merge(string c1, string c2);
+//
+//    // Virtual function in base class?
+//    string mutate(string input);
 
 };
 

@@ -4,9 +4,9 @@
 using namespace std;
 
 template<class T>
-class Cipher {
+class ICipher {
 public:
-    virtual  ~Cipher() {}
+    virtual  ~ICipher() = default;
 
     virtual T Decipher(T key) = 0;
 };
